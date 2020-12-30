@@ -1,32 +1,46 @@
 from django.db import models
-from common.models import BaseModel
- 
-class Todo(BaseModel):  # 필드와 그 옵션을 정의합니다.
+
+# Create your models here.
+class Todo(models.Model):  # 필드와 그 옵션을 정의합니다.
     title = models.CharField(
         max_length=64,
-        verbose_name="투두 제목",
-        help_text="투두 제목 입니다."
+        verbose_name="제목",
+        help_text="제목"
     )
     description = models.CharField(
         max_length=256,
         null=True,
         blank=True,
-        verbose_name="투두 설명",
-        help_text="투두 설명 입니다."
+        verbose_name="설명",
+        help_text="설명"
     )
     author = models.CharField(
         max_length=16,
-        verbose_name="투두 작성자",
-        help_text="투두 작성자를 나타냅니다."
+        verbose_name="작성자",
+        help_text="작성자"
     )
     due_date = models.DateTimeField(
-        verbose_name="투두 마감일",
-        help_text="투두 마감일을 나타냅니다."
+        verbose_name="마감일",
+        help_text="마감일"
     )
     completed = models.BooleanField(
         default=False,
-        verbose_name="투두 완료 여부",
-        help_text="투두 완료 여부를 나타냅니다."
+        verbose_name="완료 여부",
+        help_text="완료 여부"
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        blank=True,
+        null=False,
+        verbose_name="생성 일시",
+        help_text="데이터가 생성된 날짜 시간"
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        blank=True,
+        null=False,
+        verbose_name="수정 일시",
+        help_text="데이터가 수정된 날짜 시간"
     )
 
 
@@ -34,9 +48,9 @@ class Todo(BaseModel):  # 필드와 그 옵션을 정의합니다.
     # verbose_name_plural: 영어를 기준으로 복수형입니다. 옵션을 지정하지 않으면 verbose_name에 s를 붙입니다.
     # ordering: '-created' 라는 필드를 기준으로 내림차순으로 정렬합니다.
     class Meta:
-        verbose_name = '투두 리스트'
-        verbose_name_plural = '투두 리스트(들)'
+        verbose_name = '할일 목록'
+        verbose_name_plural = '핧일 목록'
         ordering = ['-created_at']
-
+    
     def __str__(self):
-        return f"Todo-{self.author}-{self.created_at}"
+        return f"Todo {self.title}/{self.author}/{self.created_at}"

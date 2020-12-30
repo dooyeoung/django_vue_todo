@@ -14,18 +14,18 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(8ark4b7c3sjry)9*4(1zx00#(tn=n!d(afgs=9l5!=y$y#j+)'
+SECRET_KEY = ')6rihfo^)xojxw7l&znssz1d5ml-ww@kgutbh&%4)y40yge-dx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*'] # 개발용은 *, 배포용은 가능 호스트를 설정한다.
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'drf_yasg', 
     'rest_framework',
-    'django_extensions', # 쉘 사용가능
-     
+    'django_extensions', 
+
     'todo',
 ]
 

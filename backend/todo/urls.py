@@ -5,7 +5,6 @@ from todo.views import *  # views/__init__.py 에서 status_check.py를 모듈�
 router = DefaultRouter()  # viewset 은 router 를 사용하여 URL 을 관리할 수 있습니다.
 router.register(r'todo', TodoModelViewSet)
 
-urlpatterns = [
-    path('status_check/', status_check, name='status_check'),  # /api/status_check/
+urlpatterns = [ 
     path('', include(router.urls)),  # 위에 선언한 router 를 사용
 ]
